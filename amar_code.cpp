@@ -14,8 +14,6 @@ private:
     float gasBill;
     float waterBill;
     float maintainance;
-    bool isRepairNeeded;
-    bool isPaintNeeded;
     bool isSecurityCameraNeeded;
 
 public:
@@ -28,9 +26,7 @@ public:
         this->gasBill = 0;
         this->waterBill = 0;
         this->maintainance = 0;
-        this->isRepairNeeded = false;
-        this->isPaintNeeded = false;
-        this->isSecurityCameraNeeded = false;
+        this->isSecurityCameraNeeded=false;
     };
     Apartment(int aptnumber, float rent, float electricityBill, float gasBill, float waterBill)
     {
@@ -41,9 +37,7 @@ public:
         this->gasBill = gasBill;
         this->waterBill = waterBill;
         this->maintainance = 0;
-        this->isRepairNeeded = false;
-        this->isPaintNeeded = false;
-        this->isSecurityCameraNeeded = false;
+       
     }
 
     int getAptNumber()
@@ -85,15 +79,6 @@ public:
         return (rent + electricityBill + waterBill + gasBill + maintainance);
     }
 
-    void setIsRepairNeeded(bool isRepairNeeded)
-    {
-        this->isRepairNeeded = isRepairNeeded;
-    }
-
-    void setIsPaintNeeded(bool isPaintNeeded)
-    {
-        this->isPaintNeeded = isPaintNeeded;
-    }
 
     bool getIsSecurityCameraNeeded()
     {
