@@ -26,9 +26,9 @@ public:
         this->gasBill = 0;
         this->waterBill = 0;
         this->maintainance = 0;
-        this->isSecurityCameraNeeded=false;
+        this->isSecurityCameraNeeded = false;
     };
-    Apartment(int aptnumber, float rent, float electricityBill, float gasBill, float waterBill)
+    Apartment(int aptnumber, float rent, float electricityBill, float gasBill, float waterBill, float maintainance = 0)
     {
         this->aptNumber = aptnumber;
 
@@ -36,8 +36,7 @@ public:
         this->electricityBill = electricityBill;
         this->gasBill = gasBill;
         this->waterBill = waterBill;
-        this->maintainance = 0;
-       
+        this->maintainance = maintainance;
     }
 
     int getAptNumber()
@@ -79,7 +78,6 @@ public:
         return (rent + electricityBill + waterBill + gasBill + maintainance);
     }
 
-
     bool getIsSecurityCameraNeeded()
     {
         return isSecurityCameraNeeded;
@@ -90,7 +88,7 @@ public:
     {
         this->isSecurityCameraNeeded = isSecurityCameraNeeded;
     }
-    void getmaintainance(float extra)
+    void addmaintainance(float extra)
     {
         maintainance += extra;
     }
@@ -214,7 +212,7 @@ public:
         if (aptNumber > 0 && aptNumber <= apartments.size())
         {
             Apartment &apt = apartments[aptNumber - 1];
-            apt.getmaintainance(cost);
+            apt.addmaintainance(cost);
             cout << "Repair successful for apartment " << aptNumber << "." << endl;
         }
         else
@@ -229,7 +227,7 @@ public:
         {
 
             Apartment &apt = apartments[aptNumber - 1];
-            apt.getmaintainance(cost);
+            apt.addmaintainance(cost);
             cout << "Successfully painted apartment " << aptNumber << "." << endl;
         }
         else
@@ -246,7 +244,7 @@ public:
             if (!apt.getIsSecurityCameraNeeded())
             {
                 apt.setIsSecurityCameraNeeded(true);
-                apt.getmaintainance(5000);
+                apt.addmaintainance(5000);
                 cout << "Security camera has succesfully added " << aptNumber << "." << endl;
             }
             else
